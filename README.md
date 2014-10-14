@@ -18,9 +18,9 @@ Supported GeoJSON objects are currently:
 
 ### Usage
 
-You need to replace the string `<insert API key here>` with your actual Google Maps API key. Information about how to optain a key can be found here: https://developers.google.com/maps/documentation/javascript/tutorial#api_key
+You need to replace the string `<insert API key here>` with your actual Google Maps API key in [`index.html`](https://github.com/rueckstiess/geodndmap/blob/master/index.html#L33). Information about how to optain a key can be found here: https://developers.google.com/maps/documentation/javascript/tutorial#api_key
 
-Then open the `index.html` with your browser (Chrome recommended), drag&drop a GeoJSON file or selected text onto the map, and see it rendered. As an example, you can select and drag this polygon definition below: 
+Then open the file `index.html` with your browser (Chrome recommended), drag&drop a GeoJSON file or selected text onto the map, and see it rendered. As an example, you can select and drag this polygon definition below: 
 
 ```json
 {
