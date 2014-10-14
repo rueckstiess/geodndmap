@@ -16,3 +16,38 @@ Supported GeoJSON objects are currently:
 * MultiPoint
 * GeometryCollection
 
+### Usage
+
+You need to replace the string `<insert API key here>` with your actual Google Maps API key. Information about how to optain a key can be found here: https://developers.google.com/maps/documentation/javascript/tutorial#api_key
+
+Then open the `index.html` with your browser (Chrome recommended), drag&drop a GeoJSON file or selected text onto the map, and see it rendered. As an example, you can select and drag this polygon definition below: 
+
+```json
+{
+  "type": "Polygon",
+  "coordinates": [
+    [
+      [
+        -80.267831,
+        42.050312
+      ],
+      [
+        -80.267831,
+        45.003652
+      ],
+      [
+        -73.362579,
+        45.003652
+      ],
+      [
+        -73.362579,
+        42.050312
+      ],
+      [
+        -80.267831,
+        42.050312
+      ]
+    ]
+  ]
+}
+``` 
