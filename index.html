@@ -30,7 +30,7 @@
         background-position: center;
       }
     </style>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<insert API key here>&v=3.exp"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCa7ka1f8uuNJc-xrTsZu-uKjpcfndTGwE&v=3.exp"></script>
     <script type="text/javascript">
 
 var map;
@@ -96,7 +96,8 @@ function loadGeoJson(geo) {
       strokeWeight: 2,
       fillColor: '#FF0000',
       fillOpacity: 0.30,
-      geodesic: true
+      geodesic: true,
+      draggable: true
     });
   } else if (geo.type.toLowerCase() === 'linestring') {
     var polyline = new google.maps.Polyline({
