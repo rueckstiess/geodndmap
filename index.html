@@ -79,6 +79,14 @@ function coord2LatLng(arr, depth) {
   }
 }
 
+function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 
 /** 
  * load GeoJSON string or object and render shape on map
@@ -87,14 +95,15 @@ function loadGeoJson(geo) {
   if (typeof geo === 'string') {
     geo = JSON.parse(geo);
   }
+  var colour = getRandomColor()
   if (geo.type.toLowerCase() === 'polygon') {
     var polygon = new google.maps.Polygon({
       map: map,
       paths: coord2LatLng(geo.coordinates, 2),
-      strokeColor: '#FF0000',
+      strokeColor: colour,
       strokeOpacity: 0.8,
       strokeWeight: 2,
-      fillColor: '#FF0000',
+      fillColor: colour,
       fillOpacity: 0.30,
       geodesic: true,
       draggable: true
