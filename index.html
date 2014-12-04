@@ -79,13 +79,12 @@ function coord2LatLng(arr, depth) {
   }
 }
 
-function getRandomColor() {
-    var letters = '0123456789ABCDEF'.split('');
-    var color = '#';
-    for (var i = 0; i < 6; i++ ) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
+var colors = ['#1f77b4', '#ff7f0e','#2ca02c','#d62728','#9467bd','#8c564b','#e377c2','#7f7f7f','#bcbd22','#17becf']
+var counter = 0;
+
+function getNextColor() {
+    return colors[counter % colors.length];
+    counter++;
 }
 
 /** 
