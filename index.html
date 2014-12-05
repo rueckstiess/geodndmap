@@ -94,7 +94,7 @@ function loadGeoJson(geo) {
   if (typeof geo === 'string') {
     geo = JSON.parse(geo);
   }
-  var color = getRandomColor()
+  var color = getNextColor()
   if (geo.type.toLowerCase() === 'polygon') {
     var polygon = new google.maps.Polygon({
       map: map,
