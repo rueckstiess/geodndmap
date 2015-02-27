@@ -83,18 +83,16 @@ var colors = ['#1f77b4', '#ff7f0e','#2ca02c','#d62728','#9467bd','#8c564b','#e37
 var counter = 0;
 
 function getNextColor() {
-    return colors[counter % colors.length];
-    counter++;
+    return color = colors[counter++ % colors.length];
 }
 
 /** 
  * load GeoJSON string or object and render shape on map
  **/
-function loadGeoJson(geo) {
+function loadGeoJson(geo, color) {
   if (typeof geo === 'string') {
     geo = JSON.parse(geo);
   }
-  var color = getRandomColor()
   if (geo.type.toLowerCase() === 'polygon') {
     var polygon = new google.maps.Polygon({
       map: map,
@@ -111,7 +109,7 @@ function loadGeoJson(geo) {
     var polyline = new google.maps.Polyline({
       map: map,
       path: coord2LatLng(geo.coordinates, 1),
-      strokeColor: '#FF0000',
+      strokeColor: color,
       strokeOpacity: 0.8,
       strokeWeight: 2,
       geodesic: true
@@ -130,7 +128,7 @@ function loadGeoJson(geo) {
       });
     });
   } else if (geo.type.toLowerCase() === 'geometrycollection') {
-    geo.geometries.forEach(loadGeoJson);
+    geo.geometries.forEach(loadGeoJson, color);
   }
 }
 
@@ -174,6 +172,8 @@ function handleDrop(e) {
   e.stopPropagation();
   hidePanel(e);
 
+  var color = getNextColor();
+
   var files = e.dataTransfer.files;
   if (files.length) {
     // process file(s) being dropped
@@ -181,7 +181,7 @@ function handleDrop(e) {
     for (var i = 0, file; file = files[i]; i++) {
       var reader = new FileReader();
       reader.onload = function(e) {
-        loadGeoJson(e.target.result);
+        loadGeoJson(e.target.result, color);
         map.fitBounds(bounds);
       };
       reader.onerror = function(e) {
@@ -194,7 +194,7 @@ function handleDrop(e) {
     // grab the plain text version of the data
     var plainText = e.dataTransfer.getData('text/plain');
     if (plainText) {
-      loadGeoJson(plainText);
+      loadGeoJson(plainText, color);
       map.fitBounds(bounds);
     }
   }
